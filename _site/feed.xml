@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>FanKunPeng</title>
+    <description>My persional blog &amp;&amp; my study log</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 06 Apr 2017 11:34:57 +0800</pubDate>
+    <lastBuildDate>Thu, 06 Apr 2017 11:34:57 +0800</lastBuildDate>
+    <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>test</title>
+        <description>&lt;p&gt;你好，世界&lt;/p&gt;
+</description>
+        <pubDate>Tue, 04 Apr 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/test</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/test</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
