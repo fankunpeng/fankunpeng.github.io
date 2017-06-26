@@ -35,8 +35,7 @@ tags: Leetcode 题解
  *
  *
  */
-
-'''C++
+{% highlight C++ %}
 #include <vector>
 #include <map>
 using namespace std;
@@ -72,5 +71,6 @@ public:
         }
         return result;
     }
+
 };
-'''C++
+{% endhighlight %}
