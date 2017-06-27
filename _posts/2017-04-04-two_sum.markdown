@@ -9,33 +9,28 @@ tags: Leetcode题解
 # 问题分析：
 可以先将数组存入C++ 的容器map（数组的值做key, 索引做value)中，然后从头开始遍历，由给定的target值减去每一个数(a)来获得对应的另一个数(b)的值，再用map判断这个数(b)是否在map中。如果在，取得其索引即可。由map的性质可知，如果遇到两个key相同的情况，则会用新的值来取代原来key对应的值，所以存储在map中与eky对应的值是最后出现的key的索引。根据题目描述，只可能出现一种所求的两个数的数值相等的情况，就是target是个偶数，而所求的两个数正好是target的1/2。这种情况需要单独讨论，因为map的一个key只能对应一个value。从头开始往后遍历数组，遍历到一个数等于target的1/2的时候，用map求一个这个数值对应的索引并且与这个数的索引比较，如果二者不相等，则证明数组中有两个1/2 target.
 # C++代码示例
-/*
- * [1] Two Sum
- *
- * https://leetcode.com/problems/two-sum
- *
- * Easy (33.09%)
- * Total Accepted:
- * Total Submissions:
- * Testcase Example:  '[3,2,4]\n6'
- *
- * Given an array of integers, return indices of the two numbers such that they
- * add up to a specific target.
- *
- * You may assume that each input would have exactly one solution, and you may
- * not use the same element twice.
- *
- *
- * Example:
- *
- * Given nums = [2, 7, 11, 15], target = 9,
- *
- * Because nums[0] + nums[1] = 2 + 7 = 9,
- * return [0, 1].
- *
- *
- */
-
+  [1] Two Sum
+ 
+  https://leetcode.com/problems/two-sum
+ 
+  Easy (33.09%)
+  Total Accepted:
+  Total Submissions:
+  Testcase Example:  '[3,2,4]\n6'
+ 
+  Given an array of integers, return indices of the two numbers such that they
+  add up to a specific target.
+ 
+  You may assume that each input would have exactly one solution, and you may
+  not use the same element twice.
+ 
+ 
+  Example:
+ 
+  Given nums = [2, 7, 11, 15], target = 9,
+ 
+  Because nums[0] + nums[1] = 2 + 7 = 9,
+  return [0, 1].
 
 {% highlight ruby %}
 #include <vector>
