@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Two-Sum
-tags: Leetcode 题解
+tags: Leetcode题解
 ---
 # 题目描述：
 给定一个由整数组成的数组，返回相加后能得到一个特定值（target）的两个数的索引。
