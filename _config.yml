@@ -33,6 +33,7 @@ github: fankunpeng
 # Build settings
 markdown: kramdown
 highlighter: pygments
+excerpt_separator: ""
 sass:
   style: compressed
 gems:
