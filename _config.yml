@@ -32,7 +32,8 @@ github: fankunpeng
 
 # Build settings
 markdown: kramdown
-highlighter: pygments
+#highlighter: pygments
+highlighter: rouge
 excerpt_separator: ""
 sass:
   style: compressed
