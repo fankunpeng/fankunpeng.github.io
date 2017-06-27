@@ -35,6 +35,8 @@ tags: Leetcode 题解
  *
  *
  */
+
+
 {% highlight ruby %}
 #include <vector>
 #include <map>
@@ -48,6 +50,7 @@ public:
 
         int first = -1;
         int second = -1;
+
         for(int i = 0; i < length; ++i) {
             index[nums[i]] = i;
         }
@@ -73,4 +76,5 @@ public:
     }
 
 };
+
 {% endhighlight %}
