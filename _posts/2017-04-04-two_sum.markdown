@@ -35,7 +35,7 @@ tags: Leetcode 题解
  *
  *
  */
-{% highlight C++ %}
+{% highlight ruby %}
 #include <vector>
 #include <map>
 using namespace std;
