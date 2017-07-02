@@ -28,7 +28,8 @@ tags: leetcode题解
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        auto h1 = l1; auto h2 = l2;
+        auto h1 = l1;
+        auto h2 = l2;
         int flag = 0;
         ListNode* head;
         ListNode* hd = NULL;
