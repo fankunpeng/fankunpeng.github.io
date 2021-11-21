@@ -1,4 +1,4 @@
-I"<h1 id="题目描述">题目描述:</h1>
+I"%<h1 id="abantes">ABANTES:</h1>
 <p>给两个用非空链表表示的正整数，按链表头节点存储个位，十位百位……依次排列的顺序将每个数据位存储在一个链表的节点中，将两个链表相加并返回其和的链表形式(表示方法同输入链表)。假设正整数除非本身是0,否则不会以0开头。
 <a href="https://leetcode.com/problems/add-two-numbers">原体目</a></p>
 
@@ -11,8 +11,7 @@
 </ul>
 
 <h1 id="c代码示例">C++代码示例：</h1>
-
-<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="cm">/**
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
  * Definition for singly-linked list.
  * struct ListNode {
  *     int val;
@@ -62,6 +61,6 @@
         <span class="p">}</span>
         <span class="k">return</span> <span class="n">head</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">};</span></code></pre></figure>
-
+<span class="p">};</span>
+</code></pre></div></div>
 :ET

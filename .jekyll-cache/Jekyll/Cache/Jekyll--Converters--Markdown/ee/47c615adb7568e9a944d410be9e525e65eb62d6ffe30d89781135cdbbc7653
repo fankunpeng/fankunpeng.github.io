@@ -1,0 +1,15 @@
+I"�<h1 id="问题">问题：</h1>
+
+<p>在Fedora25上使用itchat 和 howdoi 的时候都遇到了这样的问题，模块无法加载而且出现了错误：</p>
+<blockquote>
+  <p>cannot import name integer_types</p>
+</blockquote>
+
+<h1 id="解决办法">解决办法：</h1>
+
+<blockquote>
+  <p>pip install -U requests</p>
+</blockquote>
+
+<p>如果出现无法安装的问题，可能是网络不好，多安几次即可</p>
+:ET

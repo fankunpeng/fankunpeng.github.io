@@ -3,7 +3,7 @@ layout: post
 title: Add Two Numbers
 tags: Leetcode题解
 ---
-# 题目描述:
+# ABANTES:
 给两个用非空链表表示的正整数，按链表头节点存储个位，十位百位……依次排列的顺序将每个数据位存储在一个链表的节点中，将两个链表相加并返回其和的链表形式(表示方法同输入链表)。假设正整数除非本身是0,否则不会以0开头。
 [原体目](https://leetcode.com/problems/add-two-numbers)
 
@@ -14,7 +14,7 @@ tags: Leetcode题解
 - 低位相加后如果大于9需要进位，最高位进位后所得的和链表比两个输入链表都多一个值为一的节点。
 
 # C++代码示例：
-{% highlight C++ %}
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -66,4 +66,4 @@ public:
         return head;
     }
 };
-{% endhighlight %}
+```

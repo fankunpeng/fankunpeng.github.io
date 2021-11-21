@@ -1,0 +1,11 @@
+I"�<h1 id="问题">问题：</h1>
+<p>fedora25下虽然安装了python3-pip, 但是pip3命令依然不能使用</p>
+
+<h1 id="解决方法">解决方法：</h1>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://bootstrap.pypa.io/ez_setup.py
+pyth3.5 ez_setup.py
+easy_install-3.5 pip 
+pip3.5 <span class="nb">install</span> <span class="nt">--upgrade</span> pip
+</code></pre></div></div>
+:ET
