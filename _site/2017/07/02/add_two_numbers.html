@@ -1,0 +1,51 @@
+<!DOCTYPE html> <html> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /> <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]--> <title>Add Two Numbers</title> <meta name="description" content=""> <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600|Droid+Sans+Mono' rel='stylesheet' type='text/css'> <link rel="stylesheet" href="/css/main.css"> <link rel="canonical" href="http://yourdomain.com/2017/07/02/add_two_numbers.html"> <link rel="alternate" type="application/rss+xml" title="樊鲲鹏的个人博客" href="http://yourdomain.com/feed.xml" /> <script src="/assets/js/prefixfree.js"></script> </head> <body> <aside id="sidebar"> <div id="sidebar-left"> <a id="sidebar-avatar" href="/"> <img id="sidebar-avatar-img" alt="" src="/assets/img/avatar.jpg"/> </a> <div id="sidebar-social"> <a href="/feed.xml" class="sidebar-social-icon feed"></a> <a href="mailto:xitiroli@foxmail.com;" class="sidebar-social-icon email"></a> <a href="https://github.com/fankunpeng" class="sidebar-social-icon github" target="_blank"></a> </div> <ul id="sidebar-tags"> <li class="sidebar-tag active" data-filter="all">全部文章</li> <li class="sidebar-tag" data-filter="Leetcode题解">Leetcode题解</li> <li class="sidebar-tag" data-filter="坑与填坑">坑与填坑</li> </ul> </div> <div id="sidebar-right"> <div id="search-box"> <input id="search-input" type="text" placeholder="Search" /> </div> <nav id="toc"> <a class="toc-link" data-tags="Leetcode题解" href="/2017/07/02/add_two_numbers.html"> Add Two Numbers </a> <a class="toc-link" data-tags="坑与填坑" href="/2017/06/29/fedora25-pip3.html"> 解决fedora25下pip3不能使用的问题 </a> <a class="toc-link" data-tags="坑与填坑" href="/2017/06/28/integer_types.html"> python error--- cannot import name integer_types的解决办法 </a> <a class="toc-link" data-tags="Leetcode题解" href="/2017/04/04/two_sum.html"> Two-Sum </a> </nav> </div> </aside> <main id="main"> <article class="post container"> <div class="post-meta"> <span class="post-meta-span date">2017 July 02</span> <span class="post-meta-span tag">Leetcode题解</span> </div> <h1 class="post-title">Add Two Numbers</h1> <h1 id="题目描述">题目描述:</h1> <p>给两个用非空链表表示的正整数，按链表头节点存储个位，十位百位……依次排列的顺序将每个数据位存储在一个链表的节点中，将两个链表相加并返回其和的链表形式(表示方法同输入链表)。假设正整数除非本身是0,否则不会以0开头。 <a href="https://leetcode.com/problems/add-two-numbers">原体目</a></p> <h1 id="问题分析">问题分析：</h1> <p>这是一个考察链表操作的题目。如果熟悉链表操作，这个问题将非常简单。 有几点需要注意：</p> <ul> <li>并不能保证这两个链表是等长的，比如说输入了5, 555两个数。其中短数的部分可以用0填充。</li> <li>低位相加后如果大于9需要进位，最高位进位后所得的和链表比两个输入链表都多一个值为一的节点。</li> </ul> <h1 id="c代码示例">C++代码示例：</h1> <figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="cm">/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */</span>
+
+<span class="cp">#include &lt;vector&gt;
+</span><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">ListNode</span><span class="o">*</span> <span class="n">addTwoNumbers</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span> <span class="n">l1</span><span class="p">,</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">l2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">auto</span> <span class="n">h1</span> <span class="o">=</span> <span class="n">l1</span><span class="p">;</span>
+        <span class="k">auto</span> <span class="n">h2</span> <span class="o">=</span> <span class="n">l2</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">flag</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">ListNode</span><span class="o">*</span> <span class="n">head</span><span class="p">;</span>
+        <span class="n">ListNode</span><span class="o">*</span> <span class="n">hd</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">h1</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">||</span> <span class="n">h2</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">h1</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">h1</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
+                <span class="n">h1</span> <span class="o">=</span> <span class="n">h1</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">h2</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">b</span> <span class="o">=</span> <span class="n">h2</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
+                <span class="n">h2</span> <span class="o">=</span> <span class="n">h2</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">hd</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">hd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListNode</span><span class="p">((</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">flag</span><span class="p">)</span><span class="o">%</span><span class="mi">10</span><span class="p">);</span>
+                <span class="n">head</span> <span class="o">=</span> <span class="n">hd</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">hd</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListNode</span><span class="p">((</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">flag</span><span class="p">)</span><span class="o">%</span><span class="mi">10</span><span class="p">);</span>
+                <span class="n">hd</span> <span class="o">=</span> <span class="n">hd</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">((</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">flag</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">9</span><span class="p">)</span>
+                <span class="n">flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="k">else</span>
+                <span class="n">flag</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">flag</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">auto</span> <span class="n">n</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListNode</span><span class="p">(</span><span class="n">flag</span><span class="p">);</span>
+            <span class="n">hd</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">head</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span></code></pre></figure> </article> <div class="post-share"> <div class="container"> <a href="https://twitter.com/share?url=http://yourdomain.com/2017/07/02/add_two_numbers.html&text=Add Two Numbers" target="_blank" class="post-share-icon twitter"></a> <a href="https://www.evernote.com/clip.action?url=http://yourdomain.com/2017/07/02/add_two_numbers.html&title=Add Two Numbers" target="_blank" class="post-share-icon evernote"></a> <a href="http://service.weibo.com/share/share.php?url=http://yourdomain.com/2017/07/02/add_two_numbers.html&title=Add Two Numbers" target="_blank" class="post-share-icon weibo"></a> </div> </div> <div class="footer"> <div class="container"> <p class="footer-entry">All content is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA</a></p> <p class="footer-entry">Buit with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> and <a href="https://github.com/P233/3-Jekyll" target="_blank">3-Jekyll theme</a> • Hosted on <a href="https://pages.github.com/" target="_blank">Github</a></p> </div> </div> </main> <button id="menu"> <span id="menu-icons"></span> </button> <script src="/assets/js/jquery-2.1.3.min.js"></script> <script src="/assets/js/jquery.pjax.js"></script> <script src="/assets/js/nprogress.js"></script> <script src="/assets/js/main.js"></script> </body> </html>

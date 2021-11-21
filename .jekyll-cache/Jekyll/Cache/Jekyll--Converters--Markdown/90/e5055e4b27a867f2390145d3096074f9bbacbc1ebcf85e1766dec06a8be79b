@@ -1,0 +1,67 @@
+I"<h1 id="题目描述">题目描述:</h1>
+<p>给两个用非空链表表示的正整数，按链表头节点存储个位，十位百位……依次排列的顺序将每个数据位存储在一个链表的节点中，将两个链表相加并返回其和的链表形式(表示方法同输入链表)。假设正整数除非本身是0,否则不会以0开头。
+<a href="https://leetcode.com/problems/add-two-numbers">原体目</a></p>
+
+<h1 id="问题分析">问题分析：</h1>
+<p>这是一个考察链表操作的题目。如果熟悉链表操作，这个问题将非常简单。
+有几点需要注意：</p>
+<ul>
+  <li>并不能保证这两个链表是等长的，比如说输入了5, 555两个数。其中短数的部分可以用0填充。</li>
+  <li>低位相加后如果大于9需要进位，最高位进位后所得的和链表比两个输入链表都多一个值为一的节点。</li>
+</ul>
+
+<h1 id="c代码示例">C++代码示例：</h1>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="cm">/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */</span>
+
+<span class="cp">#include &lt;vector&gt;
+</span><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">ListNode</span><span class="o">*</span> <span class="n">addTwoNumbers</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span> <span class="n">l1</span><span class="p">,</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">l2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">auto</span> <span class="n">h1</span> <span class="o">=</span> <span class="n">l1</span><span class="p">;</span>
+        <span class="k">auto</span> <span class="n">h2</span> <span class="o">=</span> <span class="n">l2</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">flag</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">ListNode</span><span class="o">*</span> <span class="n">head</span><span class="p">;</span>
+        <span class="n">ListNode</span><span class="o">*</span> <span class="n">hd</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">h1</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">||</span> <span class="n">h2</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">h1</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">h1</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
+                <span class="n">h1</span> <span class="o">=</span> <span class="n">h1</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">h2</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">b</span> <span class="o">=</span> <span class="n">h2</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
+                <span class="n">h2</span> <span class="o">=</span> <span class="n">h2</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">hd</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">hd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListNode</span><span class="p">((</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">flag</span><span class="p">)</span><span class="o">%</span><span class="mi">10</span><span class="p">);</span>
+                <span class="n">head</span> <span class="o">=</span> <span class="n">hd</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">hd</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListNode</span><span class="p">((</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">flag</span><span class="p">)</span><span class="o">%</span><span class="mi">10</span><span class="p">);</span>
+                <span class="n">hd</span> <span class="o">=</span> <span class="n">hd</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">((</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">flag</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">9</span><span class="p">)</span>
+                <span class="n">flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="k">else</span>
+                <span class="n">flag</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">flag</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">auto</span> <span class="n">n</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListNode</span><span class="p">(</span><span class="n">flag</span><span class="p">);</span>
+            <span class="n">hd</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">head</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+:ET

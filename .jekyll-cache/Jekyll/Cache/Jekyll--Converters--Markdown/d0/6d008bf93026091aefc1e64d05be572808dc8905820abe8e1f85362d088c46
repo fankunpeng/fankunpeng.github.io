@@ -1,0 +1,67 @@
+I"�<h1 id="题目描述">题目描述：</h1>
+<p>给定一个由整数组成的数组，返回数组中相加后能得到一个特定值（target）的两个数的索引。
+假定每组输入只有一个精确的解，并且一个数只能使用一次。</p>
+<h1 id="问题分析">问题分析：</h1>
+<p>可以先将数组存入C++ 的容器map（数组的值做key, 索引做value)中，然后从头开始遍历，由给定的target值减去每一个数(a)来获得对应的另一个数(b)的值，再用map判断这个数(b)是否在map中。如果在，取得其索引即可。由map的性质可知，如果遇到两个key相同的情况，则会用新的值来取代原来key对应的值，所以存储在map中与eky对应的值是最后出现的key的索引。根据题目描述，只可能出现一种所求的两个数的数值相等的情况，就是target是个偶数，而所求的两个数正好是target的1/2。这种情况需要单独讨论，因为map的一个key只能对应一个value。从头开始往后遍历数组，遍历到一个数等于target的1/2的时候，用map求一个这个数值对应的索引并且与这个数的索引比较，如果二者不相等，则证明数组中有两个1/2 target.</p>
+<h1 id="c代码示例">C++代码示例</h1>
+<p>[1] Two Sum</p>
+
+<p>https://leetcode.com/problems/two-sum</p>
+
+<p>Easy (33.09%)
+  Total Accepted:
+  Total Submissions:
+  Testcase Example:  ‘[3,2,4]\n6’</p>
+
+<p>Given an array of integers, return indices of the two numbers such that they
+  add up to a specific target.
+  You may assume that each input would have exactly one solution, and you may
+  not use the same element twice.</p>
+
+<p>Example:
+  Given nums = [2, 7, 11, 15], target = 9,
+  Because nums[0] + nums[1] = 2 + 7 = 9,
+  return [0, 1].</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#include &lt;vector&gt;</span>
+<span class="c1">#include &lt;map&gt;</span>
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="ss">public:
+    </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span> <span class="n">twoSum</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">,</span> <span class="n">int</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">auto</span> <span class="n">length</span> <span class="o">=</span> <span class="n">nums</span><span class="p">.</span><span class="nf">size</span><span class="p">();</span>
+        <span class="n">map</span><span class="o">&lt;</span><span class="n">int</span><span class="p">,</span> <span class="n">int</span><span class="o">&gt;</span> <span class="n">index</span><span class="p">;</span>
+
+        <span class="n">int</span> <span class="n">first</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="n">int</span> <span class="n">second</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+
+        <span class="k">for</span><span class="p">(</span><span class="n">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">length</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">index</span><span class="p">[</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="n">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">length</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="o">*</span><span class="mf">1.0</span><span class="o">/</span><span class="mi">2</span> 
+                    <span class="o">&amp;&amp;</span> <span class="n">index</span><span class="p">[</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+                <span class="n">first</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+                <span class="n">second</span> <span class="o">=</span> <span class="n">index</span><span class="p">[</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">index</span><span class="p">.</span><span class="nf">count</span><span class="p">(</span><span class="n">target</span><span class="o">-</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">!=</span> <span class="mi">0</span> 
+                    <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">target</span><span class="o">-</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">&gt;</span> <span class="n">i</span><span class="p">))</span> <span class="p">{</span>
+                <span class="n">first</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+                <span class="n">second</span> <span class="o">=</span> <span class="n">index</span><span class="p">[</span><span class="n">target</span><span class="o">-</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n">vector</span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span> <span class="n">result</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">first</span> <span class="o">!=</span> <span class="n">second</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">result</span><span class="p">.</span><span class="nf">push_back</span><span class="p">(</span><span class="n">first</span><span class="p">);</span>
+            <span class="n">result</span><span class="p">.</span><span class="nf">push_back</span><span class="p">(</span><span class="n">second</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">};</span></code></pre></figure>
+
+:ET
