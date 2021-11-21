@@ -31,11 +31,10 @@ github: fankunpeng
 
 
 # Build settings
-markdown: kramdown
-#highlighter: pygments
-highlighter: rouge
+markdown: kramdown 
+kramdown: 
+    input: GFM 
+    syntax_highlighter: rouge 
 excerpt_separator: ""
 sass:
   style: compressed
-gems:
-  - jekyll-sitemap
